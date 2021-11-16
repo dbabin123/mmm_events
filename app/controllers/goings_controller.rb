@@ -1,25 +1,20 @@
 class GoingsController < ApplicationController
   before_action :set_going, only: %i[show edit update destroy]
 
-  # GET /goings
   def index
     @q = Going.ransack(params[:q])
     @goings = @q.result(distinct: true).includes(:attendee,
                                                  :event).page(params[:page]).per(10)
   end
 
-  # GET /goings/1
   def show; end
 
-  # GET /goings/new
   def new
     @going = Going.new
   end
 
-  # GET /goings/1/edit
   def edit; end
 
-  # POST /goings
   def create
     @going = Going.new(going_params)
 
@@ -35,7 +30,6 @@ class GoingsController < ApplicationController
     end
   end
 
-  # PATCH/PUT /goings/1
   def update
     if @going.update(going_params)
       redirect_to @going, notice: "Going was successfully updated."
@@ -44,7 +38,6 @@ class GoingsController < ApplicationController
     end
   end
 
-  # DELETE /goings/1
   def destroy
     @going.destroy
     message = "Going was successfully deleted."
@@ -57,12 +50,10 @@ class GoingsController < ApplicationController
 
   private
 
-  # Use callbacks to share common setup or constraints between actions.
   def set_going
     @going = Going.find(params[:id])
   end
 
-  # Only allow a trusted parameter "white list" through.
   def going_params
     params.require(:going).permit(:profile_id, :event_id)
   end
