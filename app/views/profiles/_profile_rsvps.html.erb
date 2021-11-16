@@ -1,0 +1,29 @@
+<div class="card">
+  <div class="card-header d-flex align-items-center justify-content-between">
+    Rsvps
+
+    <a data-toggle="collapse" href="#profile_rsvps_new_form">
+      Add going
+    </a>
+  </div>
+
+  <ul class="list-group list-group-flush">
+    <% @profile.rsvps.each do |going| %>
+      <li class="list-group-item d-flex align-items-center justify-content-between">
+        <!-- Show link start -->
+        <%= link_to going, going %>
+        <!-- Show link end -->
+
+      </li>
+    <% end %>
+
+    <div class="card-footer">
+      <div class="collapse" id="profile_rsvps_new_form">
+        <!-- New associationcollection form start -->
+
+        <!-- New associationcollection form end -->
+      </div>
+    </div>
+
+  </ul>
+</div>
