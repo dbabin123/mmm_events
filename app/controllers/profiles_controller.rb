@@ -3,7 +3,7 @@ class ProfilesController < ApplicationController
 
   # GET /profiles
   def index
-    @profiles = Profile.all
+    @profiles = Profile.page(params[:page]).per(10)
   end
 
   # GET /profiles/1

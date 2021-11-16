@@ -3,7 +3,7 @@ class GoingsController < ApplicationController
 
   # GET /goings
   def index
-    @goings = Going.all
+    @goings = Going.page(params[:page]).per(10)
   end
 
   # GET /goings/1
