@@ -4,8 +4,8 @@ class Going < ApplicationRecord
   belongs_to :event
 
   belongs_to :attendee,
-             :class_name => "Profile",
-             :foreign_key => "profile_id"
+             class_name: "Profile",
+             foreign_key: "profile_id"
 
   # Indirect associations
 
@@ -16,5 +16,4 @@ class Going < ApplicationRecord
   def to_s
     attendee.to_s
   end
-
 end

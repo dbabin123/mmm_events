@@ -12,5 +12,4 @@ class Comment < ApplicationRecord
   def to_s
     event_id
   end
-
 end

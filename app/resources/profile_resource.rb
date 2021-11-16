@@ -17,5 +17,4 @@ class ProfileResource < ApplicationResource
   has_many   :events
 
   # Indirect associations
-
 end

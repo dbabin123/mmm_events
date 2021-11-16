@@ -1,17 +1,16 @@
 class Profile < ApplicationRecord
-  
   include JwtToken
-# Direct associations
+  # Direct associations
 
   has_many   :comments,
-             :dependent => :destroy
+             dependent: :destroy
 
   has_many   :rsvps,
-             :class_name => "Going",
-             :dependent => :destroy
+             class_name: "Going",
+             dependent: :destroy
 
   has_many   :events,
-             :dependent => :destroy
+             dependent: :destroy
 
   # Indirect associations
 

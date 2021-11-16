@@ -18,5 +18,4 @@ class EventResource < ApplicationResource
              foreign_key: :profile_id
 
   # Indirect associations
-
 end

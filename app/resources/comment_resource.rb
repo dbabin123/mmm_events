@@ -10,5 +10,4 @@ class CommentResource < ApplicationResource
   belongs_to :profile
 
   # Indirect associations
-
 end

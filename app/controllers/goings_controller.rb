@@ -1,15 +1,15 @@
 class GoingsController < ApplicationController
-  before_action :set_going, only: [:show, :edit, :update, :destroy]
+  before_action :set_going, only: %i[show edit update destroy]
 
   # GET /goings
   def index
     @q = Going.ransack(params[:q])
-    @goings = @q.result(:distinct => true).includes(:attendee, :event).page(params[:page]).per(10)
+    @goings = @q.result(distinct: true).includes(:attendee,
+                                                 :event).page(params[:page]).per(10)
   end
 
   # GET /goings/1
-  def show
-  end
+  def show; end
 
   # GET /goings/new
   def new
@@ -17,17 +17,16 @@ class GoingsController < ApplicationController
   end
 
   # GET /goings/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /goings
   def create
     @going = Going.new(going_params)
 
     if @going.save
-      message = 'Going was successfully created.'
-      if Rails.application.routes.recognize_path(request.referrer)[:controller] != Rails.application.routes.recognize_path(request.path)[:controller]
-        redirect_back fallback_location: request.referrer, notice: message
+      message = "Going was successfully created."
+      if Rails.application.routes.recognize_path(request.referer)[:controller] != Rails.application.routes.recognize_path(request.path)[:controller]
+        redirect_back fallback_location: request.referer, notice: message
       else
         redirect_to @going, notice: message
       end
@@ -39,7 +38,7 @@ class GoingsController < ApplicationController
   # PATCH/PUT /goings/1
   def update
     if @going.update(going_params)
-      redirect_to @going, notice: 'Going was successfully updated.'
+      redirect_to @going, notice: "Going was successfully updated."
     else
       render :edit
     end
@@ -49,22 +48,22 @@ class GoingsController < ApplicationController
   def destroy
     @going.destroy
     message = "Going was successfully deleted."
-    if Rails.application.routes.recognize_path(request.referrer)[:controller] != Rails.application.routes.recognize_path(request.path)[:controller]
-      redirect_back fallback_location: request.referrer, notice: message
+    if Rails.application.routes.recognize_path(request.referer)[:controller] != Rails.application.routes.recognize_path(request.path)[:controller]
+      redirect_back fallback_location: request.referer, notice: message
     else
       redirect_to goings_url, notice: message
     end
   end
 
-
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_going
-      @going = Going.find(params[:id])
-    end
 
-    # Only allow a trusted parameter "white list" through.
-    def going_params
-      params.require(:going).permit(:profile_id, :event_id)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_going
+    @going = Going.find(params[:id])
+  end
+
+  # Only allow a trusted parameter "white list" through.
+  def going_params
+    params.require(:going).permit(:profile_id, :event_id)
+  end
 end

@@ -13,7 +13,7 @@ class Api::V1::GoingsController < Api::V1::GraphitiController
     going = GoingResource.build(params)
 
     if going.save
-      render jsonapi: going, status: 201
+      render jsonapi: going, status: :created
     else
       render jsonapi_errors: going
     end
@@ -33,7 +33,7 @@ class Api::V1::GoingsController < Api::V1::GraphitiController
     going = GoingResource.find(params)
 
     if going.destroy
-      render jsonapi: { meta: {} }, status: 200
+      render jsonapi: { meta: {} }, status: :ok
     else
       render jsonapi_errors: going
     end

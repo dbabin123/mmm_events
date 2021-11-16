@@ -1,5 +1,5 @@
 class ProfilesController < ApplicationController
-  before_action :set_profile, only: [:show, :edit, :update, :destroy]
+  before_action :set_profile, only: %i[show edit update destroy]
 
   # GET /profiles
   def index
@@ -19,15 +19,14 @@ class ProfilesController < ApplicationController
   end
 
   # GET /profiles/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /profiles
   def create
     @profile = Profile.new(profile_params)
 
     if @profile.save
-      redirect_to @profile, notice: 'Profile was successfully created.'
+      redirect_to @profile, notice: "Profile was successfully created."
     else
       render :new
     end
@@ -36,7 +35,7 @@ class ProfilesController < ApplicationController
   # PATCH/PUT /profiles/1
   def update
     if @profile.update(profile_params)
-      redirect_to @profile, notice: 'Profile was successfully updated.'
+      redirect_to @profile, notice: "Profile was successfully updated."
     else
       render :edit
     end
@@ -45,17 +44,18 @@ class ProfilesController < ApplicationController
   # DELETE /profiles/1
   def destroy
     @profile.destroy
-    redirect_to profiles_url, notice: 'Profile was successfully destroyed.'
+    redirect_to profiles_url, notice: "Profile was successfully destroyed."
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_profile
-      @profile = Profile.find(params[:id])
-    end
 
-    # Only allow a trusted parameter "white list" through.
-    def profile_params
-      params.require(:profile).permit(:first_name, :last_name)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_profile
+    @profile = Profile.find(params[:id])
+  end
+
+  # Only allow a trusted parameter "white list" through.
+  def profile_params
+    params.require(:profile).permit(:first_name, :last_name)
+  end
 end
