@@ -1,0 +1,57 @@
+<% was_validated = comment.errors.any? %>
+
+<%= form_with(model: comment, local: true, novalidate: true, class: "mb-3") do |f| %>
+  <!-- Label and input for event_id start -->
+  <div class="form-group">
+    <% event_class = "form-control" %>
+    <% event_was_invalid = comment.errors.include?(:event) %>
+
+    <% if was_validated %>
+      <% if event_was_invalid %>
+        <% event_class << " is-invalid" %>
+      <% else %>
+        <% event_class << " is-valid" %>
+      <% end %>
+    <% end %>
+
+    <%= f.label :event_id %>
+    <!-- Input for event_id start -->
+    <%= f.number_field :event_id, class: event_class, placeholder: "Enter event" %>
+    <!-- Input for event_id end -->
+    <% if event_was_invalid %>
+      <% comment.errors.full_messages_for(:event).each do |message| %>
+        <div class="invalid-feedback d-flex">
+          <%= message %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+  <!-- Label and input for event_id end -->
+  <!-- Label and input for profile_id start -->
+  <div class="form-group">
+    <% profile_class = "form-control" %>
+    <% profile_was_invalid = comment.errors.include?(:profile) %>
+
+    <% if was_validated %>
+      <% if profile_was_invalid %>
+        <% profile_class << " is-invalid" %>
+      <% else %>
+        <% profile_class << " is-valid" %>
+      <% end %>
+    <% end %>
+
+    <%= f.label :profile_id %>
+    <!-- Input for profile_id start -->
+    <%= f.number_field :profile_id, class: profile_class, placeholder: "Enter profile" %>
+    <!-- Input for profile_id end -->
+    <% if profile_was_invalid %>
+      <% comment.errors.full_messages_for(:profile).each do |message| %>
+        <div class="invalid-feedback d-flex">
+          <%= message %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+  <!-- Label and input for profile_id end -->
+  <%= f.button class: "btn btn-outline-secondary btn-block" %>
+<% end %>
