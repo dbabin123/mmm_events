@@ -12,7 +12,11 @@
 
       <dt>Profile</dt>
       <!-- Display profile_id start -->
-      <dd><%= comment.profile_id %></dd>
+      <dd>
+        <% if @comment.profile.present? %>
+          <%= link_to comment.profile, comment.profile %>
+        <% end %>
+      </dd>
       <!-- Display profile_id end -->
 
     </dl>

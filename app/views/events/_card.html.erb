@@ -7,7 +7,11 @@
     <dl class="mb-1">
       <dt>Profile</dt>
       <!-- Display profile_id start -->
-      <dd><%= event.profile_id %></dd>
+      <dd>
+        <% if @event.host.present? %>
+          <%= link_to event.host, event.host %>
+        <% end %>
+      </dd>
       <!-- Display profile_id end -->
 
       <dt>Date time</dt>
