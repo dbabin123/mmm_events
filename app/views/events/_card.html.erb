@@ -6,33 +6,23 @@
   <div class="card-body">
     <dl class="mb-1">
       <dt>Profile</dt>
-      <!-- Display profile_id start -->
       <dd>
         <% if @event.host.present? %>
           <%= link_to event.host, event.host %>
         <% end %>
       </dd>
-      <!-- Display profile_id end -->
 
       <dt>Date time</dt>
-      <!-- Display date_time start -->
       <dd><%= event.date_time %></dd>
-      <!-- Display date_time end -->
 
       <dt>Location</dt>
-      <!-- Display location start -->
       <dd><%= event.location %></dd>
-      <!-- Display location end -->
 
       <dt>Details</dt>
-      <!-- Display details start -->
       <dd><%= event.details %></dd>
-      <!-- Display details end -->
 
       <dt>Comments</dt>
-      <!-- Display comments start -->
       <dd><%= event.comments %></dd>
-      <!-- Display comments end -->
 
     </dl>
 
@@ -41,7 +31,6 @@
         <%= link_to_show_or_back event, '<i class="fas fa-search-plus"></i>'.html_safe, '<i class="fas fa-chevron-left"></i>'.html_safe, class: "btn btn-block btn-outline-secondary" %>
       </div>
 
-      <!-- Edit link event start -->
       <div class="col">
         <% if current_profile == @event.host %>
           <%= link_to edit_event_url(event), class: "btn btn-block btn-sm btn-outline-secondary" do %>
@@ -49,9 +38,7 @@
           <% end %>
         <% end %>
       </div>
-      <!-- Edit link event end -->
 
-      <!-- Delete link event start -->
       <div class="col">
         <% if current_profile == @event.host %>
           <%= link_to event, method: :delete, data: { confirm: "Do you really want to delete this event?" }, class: "btn btn-block btn-outline-secondary" do %>
@@ -59,7 +46,6 @@
           <% end %>
         <% end %>
       </div>
-      <!-- Delete link event end -->
     </div>
   </div>
 

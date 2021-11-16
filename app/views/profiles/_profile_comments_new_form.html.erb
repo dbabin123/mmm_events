@@ -1,22 +1,12 @@
-<!-- Form comment start -->
 <%= form_with(model: @comment, local: true) do |f| %>
-<!-- Form comment end -->
 
-  <!-- Label and input for event_id start -->
   <div class="form-group">
     <%= f.label :event_id %>
 
-    <!-- Input for event_id start -->
     <%= f.text_field :event_id, class: "form-control" %>
-    <!-- Input for event_id end -->
   </div>
-  <!-- Label and input for event_id end -->
 
-  <!-- Label and input for profile_id start -->
-  <!-- Input for profile_id start -->
   <%= f.hidden_field :profile_id, value: @profile.id %>
-  <!-- Input for profile_id end -->
-  <!-- Label and input for profile_id end -->
 
   <%= f.submit "Create comment", class: "btn btn-block btn-outline-secondary" %>
 <% end %>

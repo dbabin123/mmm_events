@@ -1,12 +1,7 @@
 <% was_validated = event.errors.any? %>
 
 <%= form_with(model: event, local: true, novalidate: true, class: "mb-3") do |f| %>
-  <!-- Label and input for profile_id start -->
-  <!-- Input for "profile_id" start -->
   <%= f.hidden_field :profile_id, value: current_profile.id %>
-  <!-- Input for "profile_id" end -->
-  <!-- Label and input for profile_id end -->
-  <!-- Label and input for date_time start -->
   <div class="form-group">
     <% date_time_class = "form-control" %>
     <% date_time_was_invalid = event.errors.include?(:date_time) %>
@@ -20,9 +15,7 @@
     <% end %>
 
     <%= f.label :date_time %>
-    <!-- Input for date_time start -->
     <%= f.datetime_select :date_time, class: date_time_class, placeholder: "Enter date time" %>
-    <!-- Input for date_time end -->
     <% if date_time_was_invalid %>
       <% event.errors.full_messages_for(:date_time).each do |message| %>
         <div class="invalid-feedback d-flex">
@@ -31,8 +24,6 @@
       <% end %>
     <% end %>
   </div>
-  <!-- Label and input for date_time end -->
-  <!-- Label and input for location start -->
   <div class="form-group">
     <% location_class = "form-control" %>
     <% location_was_invalid = event.errors.include?(:location) %>
@@ -46,9 +37,7 @@
     <% end %>
 
     <%= f.label :location %>
-    <!-- Input for location start -->
     <%= f.text_field :location, class: location_class, placeholder: "Enter location" %>
-    <!-- Input for location end -->
     <% if location_was_invalid %>
       <% event.errors.full_messages_for(:location).each do |message| %>
         <div class="invalid-feedback d-flex">
@@ -57,8 +46,6 @@
       <% end %>
     <% end %>
   </div>
-  <!-- Label and input for location end -->
-  <!-- Label and input for details start -->
   <div class="form-group">
     <% detail_class = "form-control" %>
     <% detail_was_invalid = event.errors.include?(:detail) %>
@@ -72,9 +59,7 @@
     <% end %>
 
     <%= f.label :details %>
-    <!-- Input for details start -->
     <%= f.text_field :details, class: detail_class, placeholder: "Enter detail" %>
-    <!-- Input for details end -->
     <% if detail_was_invalid %>
       <% event.errors.full_messages_for(:detail).each do |message| %>
         <div class="invalid-feedback d-flex">
@@ -83,8 +68,6 @@
       <% end %>
     <% end %>
   </div>
-  <!-- Label and input for details end -->
-  <!-- Label and input for comments start -->
   <div class="form-group">
     <% comment_class = "form-control" %>
     <% comment_was_invalid = event.errors.include?(:comment) %>
@@ -98,9 +81,7 @@
     <% end %>
 
     <%= f.label :comments %>
-    <!-- Input for comments start -->
     <%= f.text_field :comments, class: comment_class, placeholder: "Enter comment" %>
-    <!-- Input for comments end -->
     <% if comment_was_invalid %>
       <% event.errors.full_messages_for(:comment).each do |message| %>
         <div class="invalid-feedback d-flex">
@@ -109,6 +90,5 @@
       <% end %>
     <% end %>
   </div>
-  <!-- Label and input for comments end -->
   <%= f.button class: "btn btn-outline-secondary btn-block" %>
 <% end %>

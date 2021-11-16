@@ -1,7 +1,6 @@
 <% was_validated = going.errors.any? %>
 
 <%= form_with(model: going, local: true, novalidate: true, class: "mb-3") do |f| %>
-  <!-- Label and input for profile_id start -->
   <div class="form-group">
     <% profile_class = "form-control" %>
     <% profile_was_invalid = going.errors.include?(:profile) %>
@@ -15,9 +14,7 @@
     <% end %>
 
     <%= f.label :profile_id %>
-    <!-- Input for profile_id start -->
     <%= f.collection_select :profile_id, Profile.all, :id, :to_s, {}, class: "form-control" %>
-    <!-- Input for profile_id end -->
     <% if profile_was_invalid %>
       <% going.errors.full_messages_for(:profile).each do |message| %>
         <div class="invalid-feedback d-flex">
@@ -26,8 +23,6 @@
       <% end %>
     <% end %>
   </div>
-  <!-- Label and input for profile_id end -->
-  <!-- Label and input for event_id start -->
   <div class="form-group">
     <% event_class = "form-control" %>
     <% event_was_invalid = going.errors.include?(:event) %>
@@ -41,9 +36,7 @@
     <% end %>
 
     <%= f.label :event_id %>
-    <!-- Input for event_id start -->
     <%= f.collection_select :event_id, Event.all, :id, :to_s, {}, class: "form-control" %>
-    <!-- Input for event_id end -->
     <% if event_was_invalid %>
       <% going.errors.full_messages_for(:event).each do |message| %>
         <div class="invalid-feedback d-flex">
@@ -52,6 +45,5 @@
       <% end %>
     <% end %>
   </div>
-  <!-- Label and input for event_id end -->
   <%= f.button class: "btn btn-outline-secondary btn-block" %>
 <% end %>
