@@ -9,6 +9,9 @@ class ProfileResource < ApplicationResource
 
   # Direct associations
 
+  has_many   :rsvps,
+             resource: GoingResource
+
   has_many   :events
 
   # Indirect associations
