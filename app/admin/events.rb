@@ -1,5 +1,7 @@
 ActiveAdmin.register Event do
 
+ permit_params :profile_id, :date_time, :location, :details, :comments
+
   # See permitted parameters documentation:
   # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
   #
