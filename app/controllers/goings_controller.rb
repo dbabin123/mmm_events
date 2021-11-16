@@ -3,7 +3,8 @@ class GoingsController < ApplicationController
 
   # GET /goings
   def index
-    @goings = Going.page(params[:page]).per(10)
+    @q = Going.ransack(params[:q])
+    @goings = @q.result(:distinct => true).includes(:attendee, :event).page(params[:page]).per(10)
   end
 
   # GET /goings/1
