@@ -1,6 +1,8 @@
 class Going < ApplicationRecord
   # Direct associations
 
+  belongs_to :event
+
   belongs_to :attendee,
              :class_name => "Profile",
              :foreign_key => "profile_id"
