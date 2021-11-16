@@ -7,6 +7,8 @@ class GoingResource < ApplicationResource
 
   # Direct associations
 
+  belongs_to :event
+
   belongs_to :attendee,
              resource: ProfileResource,
              foreign_key: :profile_id
