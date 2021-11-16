@@ -2,30 +2,9 @@
 
 <%= form_with(model: event, local: true, novalidate: true, class: "mb-3") do |f| %>
   <!-- Label and input for profile_id start -->
-  <div class="form-group">
-    <% profile_class = "form-control" %>
-    <% profile_was_invalid = event.errors.include?(:profile) %>
-
-    <% if was_validated %>
-      <% if profile_was_invalid %>
-        <% profile_class << " is-invalid" %>
-      <% else %>
-        <% profile_class << " is-valid" %>
-      <% end %>
-    <% end %>
-
-    <%= f.label :profile_id %>
-    <!-- Input for profile_id start -->
-    <%= f.collection_select :profile_id, Profile.all, :id, :to_s, {}, class: "form-control" %>
-    <!-- Input for profile_id end -->
-    <% if profile_was_invalid %>
-      <% event.errors.full_messages_for(:profile).each do |message| %>
-        <div class="invalid-feedback d-flex">
-          <%= message %>
-        </div>
-      <% end %>
-    <% end %>
-  </div>
+  <!-- Input for "profile_id" start -->
+  <%= f.hidden_field :profile_id, value: current_profile.id %>
+  <!-- Input for "profile_id" end -->
   <!-- Label and input for profile_id end -->
   <!-- Label and input for date_time start -->
   <div class="form-group">
