@@ -1,6 +1,9 @@
 class Profile < ApplicationRecord
   # Direct associations
 
+  has_many   :comments,
+             :dependent => :destroy
+
   has_many   :rsvps,
              :class_name => "Going",
              :dependent => :destroy
