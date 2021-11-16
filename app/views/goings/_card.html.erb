@@ -1,0 +1,46 @@
+<div class="card mb-3">
+  <h2 class="card-header h4">
+    Going #<%= going.id %>
+  </h2>
+
+  <div class="card-body">
+    <dl class="mb-1">
+      <dt>Profile</dt>
+      <!-- Display profile_id start -->
+      <dd><%= going.profile_id %></dd>
+      <!-- Display profile_id end -->
+
+      <dt>Event</dt>
+      <!-- Display event_id start -->
+      <dd><%= going.event_id %></dd>
+      <!-- Display event_id end -->
+
+    </dl>
+
+    <div class="row">
+      <div class="col">
+        <%= link_to_show_or_back going, '<i class="fas fa-search-plus"></i>'.html_safe, '<i class="fas fa-chevron-left"></i>'.html_safe, class: "btn btn-block btn-outline-secondary" %>
+      </div>
+
+      <!-- Edit link going start -->
+      <div class="col">
+        <%= link_to edit_going_url(going), class: "btn btn-block btn-outline-secondary" do %>
+          <i class="fas fa-edit"></i>
+        <% end %>
+      </div>
+      <!-- Edit link going end -->
+
+      <!-- Delete link going start -->
+      <div class="col">
+        <%= link_to going, method: :delete, data: { confirm: "Do you really want to delete this going?" }, class: "btn btn-block btn-outline-secondary" do %>
+          <i class="fas fa-trash-alt"></i>
+        <% end %>
+      </div>
+      <!-- Delete link going end -->
+    </div>
+  </div>
+
+  <div class="card-footer text-muted">
+    Last updated <%= time_ago_in_words(going.updated_at) %> ago
+  </div>
+</div>

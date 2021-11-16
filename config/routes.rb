@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :goings
   resources :events
   devise_for :profiles
   resources :profiles
