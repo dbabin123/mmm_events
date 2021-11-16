@@ -24,7 +24,12 @@ class GoingsController < ApplicationController
     @going = Going.new(going_params)
 
     if @going.save
-      redirect_to @going, notice: 'Going was successfully created.'
+      message = 'Going was successfully created.'
+      if Rails.application.routes.recognize_path(request.referrer)[:controller] != Rails.application.routes.recognize_path(request.path)[:controller]
+        redirect_back fallback_location: request.referrer, notice: message
+      else
+        redirect_to @going, notice: message
+      end
     else
       render :new
     end

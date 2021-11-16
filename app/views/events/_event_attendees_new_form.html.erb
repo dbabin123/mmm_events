@@ -1,0 +1,22 @@
+<!-- Form going start -->
+<%= form_with(model: @going, local: true) do |f| %>
+<!-- Form going end -->
+
+  <!-- Label and input for profile_id start -->
+  <div class="form-group">
+    <%= f.label :profile_id %>
+
+    <!-- Input for profile_id start -->
+    <%= f.text_field :profile_id, class: "form-control" %>
+    <!-- Input for profile_id end -->
+  </div>
+  <!-- Label and input for profile_id end -->
+
+  <!-- Label and input for event_id start -->
+  <!-- Input for event_id start -->
+  <%= f.hidden_field :event_id, value: @event.id %>
+  <!-- Input for event_id end -->
+  <!-- Label and input for event_id end -->
+
+  <%= f.submit "Create going", class: "btn btn-block btn-outline-secondary" %>
+<% end %>

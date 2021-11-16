@@ -1,0 +1,51 @@
+<!-- Form event start -->
+<%= form_with(model: @event, local: true) do |f| %>
+<!-- Form event end -->
+
+  <!-- Label and input for profile_id start -->
+  <!-- Input for profile_id start -->
+  <%= f.hidden_field :profile_id, value: @profile.id %>
+  <!-- Input for profile_id end -->
+  <!-- Label and input for profile_id end -->
+
+  <!-- Label and input for date_time start -->
+  <div class="form-group">
+    <%= f.label :date_time %>
+    <!-- Input for date_time start -->
+    <%= f.datetime_select :date_time, class: "form-control" %>
+    <!-- Input for date_time end -->
+  </div>
+  <!-- Label and input for date_time end -->
+
+  <!-- Label and input for location start -->
+  <div class="form-group">
+    <%= f.label :location %>
+
+    <!-- Input for location start -->
+    <%= f.text_field :location, class: "form-control" %>
+    <!-- Input for location end -->
+  </div>
+  <!-- Label and input for location end -->
+
+  <!-- Label and input for details start -->
+  <div class="form-group">
+    <%= f.label :details %>
+
+    <!-- Input for details start -->
+    <%= f.text_field :details, class: "form-control" %>
+    <!-- Input for details end -->
+  </div>
+  <!-- Label and input for details end -->
+
+  <!-- Label and input for comments start -->
+  <div class="form-group">
+    <%= f.label :comments %>
+
+    <!-- Input for comments start -->
+    <%= f.text_field :comments, class: "form-control" %>
+    <!-- Input for comments end -->
+  </div>
+  <!-- Label and input for comments end -->
+
+  <%= f.submit "Create event", class: "btn btn-block btn-outline-secondary" %>
+<% end %>
