@@ -16,7 +16,7 @@
 
     <%= f.label :profile_id %>
     <!-- Input for profile_id start -->
-    <%= f.number_field :profile_id, class: profile_class, placeholder: "Enter profile" %>
+    <%= f.collection_select :profile_id, Profile.all, :id, :to_s, {}, class: "form-control" %>
     <!-- Input for profile_id end -->
     <% if profile_was_invalid %>
       <% event.errors.full_messages_for(:profile).each do |message| %>
